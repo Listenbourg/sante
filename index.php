@@ -1,7 +1,7 @@
 <?php
 
 // On démarre la session
-session_start();
+//session_start();
 
 ?>
 <html lang="en">
@@ -15,7 +15,10 @@ session_start();
     <script src="plugin/jQuery/jquery-3.6.0.min.js"></script>
 
     <!-- CKEditor -->
-    <script type="text/javascript" src="plugin/ckeditor/build/ckeditor.js"></script>
+    <!-- <script type="text/javascript" src="plugin/ckeditor/build/ckeditor.js"></script> -->
+
+    <!-- JSPdr  -->
+    <script type="text/javascript" src="plugin/jsPDF-1.3.2/dist/jspdf.min.js"></script>
 
     <!-- Scripts -->
     <script type="text/javascript" src="js/checkPassword.js"></script>
@@ -40,7 +43,11 @@ session_start();
     <link rel="stylesheet" type="text/css" href="assets/css/modal.css">
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
 
-    <title>The Great Wheel</title>
+    <?php
+        require_once("function/load.php");
+    ?>
+
+    <title>Santé - Listenbourg</title>
 </head>
 <?php
 if (isset($_GET['page'])) {
@@ -54,15 +61,16 @@ if (isset($_GET['page'])) {
     <?php
     if ($page !== "main") {
     ?>
-        <div id="navbar"></div>
-        <script>
-            // Chargement du controlleur de la page demandée
-            loadView("navbar");
-        </script>
+    <header>
+        <center>
+            <img src="assets/images/banner.png" height="150">
+        </center>
+    </header>
+       <?php include 'views/navbar.html'; ?>
     <?php
     }
     ?>
-    <div id="controller"></div>
+    <div id="controller"><?php include('controllers/home.php');?></div>
     <!-- Chat bot -->
     <div id="chat-circle" class="btn btn-raised">
         <div id="chat-overlay"></div>
@@ -89,10 +97,6 @@ if (isset($_GET['page'])) {
             </form>
         </div>
     </div>
-    <script>
-        // Chargement du controlleur de la page demandée
-        loadController("<?php echo $page ?>");
-    </script>
     <!-- Les events -->
     <?php
 

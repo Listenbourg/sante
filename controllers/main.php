@@ -1,7 +1,7 @@
 <div class="main">
     <div class="columns">
         <div class="column is-half">
-            <div id="login"></div>
+            <?php loadView("login") ?>
         </div>
         <div class="column is-half">
             <div id="intro">
@@ -13,6 +13,3 @@
         </div>
     </div>
 </div>
-<script>
-    loadView("login");
-</script>

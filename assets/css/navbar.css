@@ -1,22 +1,21 @@
 .navbar {
     background-color: rgb(240, 240, 240);
-    /* position: absolute; */
-    /* border-bottom: 1px solid rgb(145, 145, 145); */
+    position: absolute;
+    width: 100%;
 }
-.navbar-item h3 {
-
+.navbar-item {
     color: var(--text-contrast) !important;
-}
-
-.navbar-item{
-    color: var(--text-contrast) !important;
-}
-
-.navbar-item{
     background-color: var(--main-color);
+    font-size: large;
+    font-weight: bold;
 }
 
-.navbar-item:hover
-{
-    background-color: var(--main-color) !important;
+.navbar-item:not(:last-of-type){
+    border-right: 1px solid white;
+}
+
+.navbar-item:hover {
+    color: black !important;
+    background-color: var(--second-color) !important;
+    transition: all 0.5s;
 }

@@ -1,13 +1,13 @@
 :root{
-    --main-color:red ;
-    --main-color-shadow: red;
+    --main-color:#FE0000 ;
+    --main-color-shadow: rgba(254, 0, 0, 0.3);
 
-    --second-color:white;
+    --second-color:#D8BC51;
 
-    --third-color:#FCB07E;
+    --third-color:#FFFFFF;
 
-    --bg-color:white;
-    --bg-linear: linear-gradient(90deg, white, red);
+    --bg-color:rgb(233, 233, 233);
+    --bg-linear: linear-gradient(120deg, white, #FE0000);
 
     --text-main:black;
     --text-contrast:#ffffffde;
