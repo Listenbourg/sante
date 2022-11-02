@@ -10,12 +10,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/images/logo.ico">
 
     <!-- jQuery -->
     <script src="plugin/jQuery/jquery-3.6.0.min.js"></script>
 
+    <!-- Swiperjs -->
+    <!-- <script src="plugin/swiperjs/"></script> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
     <!-- CKEditor -->
-    <script type="text/javascript" src="plugin/ckeditor/build/ckeditor.js"></script>
+    <!-- <script type="text/javascript" src="plugin/ckeditor/build/ckeditor.js"></script> -->
 
     <!-- Scripts -->
     <script type="text/javascript" src="js/checkPassword.js"></script>
@@ -40,7 +47,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/modal.css">
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
 
-    <title>Emploi - Listenbourg</title>
+    <title>Santé - Listenbourg</title>
 </head>
 <?php
 if (isset($_GET['page'])) {

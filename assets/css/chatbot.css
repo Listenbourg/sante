@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 50px;
     right: 50px;
-    background: var(--main-color);
+    background: var(--second-color);
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -54,7 +54,7 @@
 }
 
 .chat-box-header {
-    background: var(--main-color);
+    background: var(--second-color);
     height: 70px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -158,7 +158,7 @@
 }
 
 .chat-logs::-webkit-scrollbar-thumb {
-    background: var(--main-color);
+    background: var(--second-color);
 }
 
 
@@ -204,7 +204,7 @@
 .chat-msg.self>.cm-msg-text {
     float: right;
     margin-right: 10px;
-    background: var(--main-color);
+    background: var(--second-color);
     color: white;
 }
 
