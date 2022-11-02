@@ -1,7 +1,7 @@
 <?php
 
 // On démarre la session
-session_start();
+//session_start();
 
 ?>
 <html lang="en">
@@ -40,7 +40,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="assets/css/modal.css">
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
 
-    <title>The Great Wheel</title>
+    <title>Emploi - Listenbourg</title>
 </head>
 <?php
 if (isset($_GET['page'])) {
