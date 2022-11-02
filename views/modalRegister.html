@@ -1,0 +1,131 @@
+<div class="modal-background"></div>
+
+<div class="modal-content">
+    <div class="box">
+        <form action="models/register.php" method="post">
+            <!-- Courriel -->
+            <div class="field">
+                <label class="label">Email <span id="errorEmail"></span></label>
+
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="email" id="registerEmail" name="registerEmail" required
+                        onkeyup="validateRegister();">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                </p>
+            </div>
+            <!-- Nom d'utilisateur -->
+            <div class="field">
+                <label class="label">Username</label>
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" name="registerUsername" required minlength="3">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </p>
+            </div>
+            <!-- Mot de passe -->
+            <div class="field">
+                <label class="label">Password*</label>
+                <p class="control has-icons-left">
+                    <input class="input" type="password" id="registerPassword" name="registerPassword" required
+                        oninput="validateRegister();">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </p>
+                <br>
+                <progress id="passwordProgress" class="progress" value="0" max="100"></progress>
+                <p>
+                    *Must contain : 1 uppercase, 1 lowercase, 1 number, 1 special character and at least
+                    12 characters.
+                </p>
+            </div>
+            <br />
+            <br />
+            <!-- Bouton d'inscription -->
+            <div class="field">
+                <div class="control has-text-centered">
+                    <input id="registerButton" type="submit" class="button" value="Register" disabled="true">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<button class="modal-close is-large" aria-label="close" onclick="closeModal('modalRegister')"></button>
+
+<script>
+
+    function validateRegister() {
+
+        //On récupère les valeur des champs password et email
+        password = $('#registerPassword').val();
+        email = $('#registerEmail').val();
+        //Appel de la fonction checkPassword --> renvoie true si le mot de passe 
+        // est valide sinon le nombre de points obtenus de 0 à 7
+        validePassword = checkPassword(password);
+
+        //On set le valideEmail à false
+        var valideEmail = false;
+
+        //On vérifie que l'email ne soit pas déja dans la bdd
+        $.ajax({
+            url: "models/verifMailRegister.php?email=" + email + "",
+            type: "GET",
+            async: false,
+            success: function (data) {
+        alert(data);
+                console.log(data);
+                if (data == 1) {
+                    valideEmail = true;
+                }
+                else {
+                    valideEmail = false;
+                }
+            }
+        });
+
+        //Si l'email n'est pas dans la bdd et le mot de passe valide on active le bouton
+        if (((valideEmail === true) && (email !== "")) && (validePassword === true)) {
+            $("#registerButton").prop("disabled", false);
+        }
+        //Sinon on le désactive
+        else {
+            $("#registerButton").prop("disabled", true);
+            //Si l'email n'est pas bon on l'affiche
+            if (!valideEmail) {
+                // $('#errorEmail').html("Courriel déjà enregistré");
+            }
+            else {
+                $('#errorEmail').html("");
+            }
+            //Si le password n'est pas bon on affiche la barre de compléxité en fonction du nombre de points
+            if (validePassword !== true) {
+                if (validePassword > 0) {
+                    pourcent = ((validePassword / 10) * 100).toFixed(0);
+
+
+                    $("#passwordProgress").attr("value", pourcent);
+
+                    if (pourcent < 50) {
+                        $("#passwordProgress").removeClass("is-success").removeClass("is-warning").addClass("is-danger");
+                    } else {
+                        $("#passwordProgress").removeClass("is-success").removeClass("is-danger").addClass("is-warning");
+                    }
+
+                }
+                else if (validePassword == 0) {
+                    $("#passwordProgress").attr("value", 0);
+                }
+            }
+            else {
+                $("#passwordProgress").attr("value", 100);
+                $("#passwordProgress").removeClass("is-danger");
+                $("#passwordProgress").removeClass("is-warning");
+                $("#passwordProgress").addClass("is-success");
+            }
+        }
+    }
+</script>

@@ -1,0 +1,33 @@
+:root{
+    --main-color:red ;
+    --main-color-shadow: red;
+
+    --second-color:white;
+
+    --third-color:#FCB07E;
+
+    --bg-color:white;
+    --bg-linear: linear-gradient(90deg, white, red);
+
+    --text-main:black;
+    --text-contrast:#ffffffde;
+}
+
+/* Titres */
+
+h1.title {
+    color: var(--main-color);
+}
+
+h2.title {
+    color: var(--second-color);
+}
+
+h3.title {
+    color: var(--third-color);
+}
+
+/* Liens */
+a {
+    color: var(--third-color);
+}
